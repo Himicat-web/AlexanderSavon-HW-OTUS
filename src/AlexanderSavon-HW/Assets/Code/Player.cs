@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-    int Multiplier = Random.Range(1, 5); // рандом для множителя урона
+    int Multiplier = Random.Range(2, 5); // рандом для множителя урона
      int CritChance = Random.Range(1, 100); // рандом для шанса крит удара 
         
         if (CritChance >= 70)
