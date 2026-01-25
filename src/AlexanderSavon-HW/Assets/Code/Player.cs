@@ -3,8 +3,6 @@ using Random = UnityEngine.Random;
 
 namespace DamageСalculation
 {
-   
-    
     public class Player : MonoBehaviour
     {
         public bool isEnemy;
@@ -14,16 +12,15 @@ namespace DamageСalculation
 
         private void Start()
         {
-            
             if (hp <= 0)
             {
                 isDeath = true;
             }
-            
+
             meshRenderer = GetComponent<MeshRenderer>();
             SetColor();
-
-           void SetColor()
+            meshRenderer.material.color = Color.gray;
+            void SetColor()
             {
                 if (isEnemy)
                     meshRenderer.material.color = Color.red;
