@@ -3,25 +3,32 @@ using Random = UnityEngine.Random;
 
 namespace DamageСalculation
 {
+   
+    
     public class Player : MonoBehaviour
     {
-        public float baseDamage = 55.0f; //добавил в инспектор что бы можно было регулировать
+        public bool isEnemy;
+        public int hp = 100;
+        private bool isDeath;
+        private MeshRenderer meshRenderer;
 
-        private float CritDamage;
-
-       private void Start()
+        private void Start()
         {
-            int Multiplier = Random.Range(2, 5); // рандом для множителя урона
-            int CritChance = Random.Range(1, 100); // рандом для шанса крит удара
-
-            if (CritChance >= 70) // сделал 30 процентов
+            
+            if (hp <= 0)
             {
-                CritDamage = (baseDamage * Multiplier);
-                Debug.Log("Критический урон! Нанесено: " + CritDamage);
+                isDeath = true;
             }
-            else
+            
+            meshRenderer = GetComponent<MeshRenderer>();
+            SetColor();
+
+           void SetColor()
             {
-                Debug.Log("Нанесено урона: " + baseDamage);
+                if (isEnemy)
+                    meshRenderer.material.color = Color.red;
+                else
+                    meshRenderer.material.color = Color.blue;
             }
         }
     }
